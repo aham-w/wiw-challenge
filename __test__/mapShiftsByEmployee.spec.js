@@ -3,7 +3,6 @@ const { mapShiftsByEmployee } = require('../utils')
 
 describe('mapShiftsByEmployee', () => {
     it('should sort shifts by employee id', () => {
-
         const shiftMap = mapShiftsByEmployee([
             {
                 EmployeeID: 1,
@@ -38,5 +37,5 @@ describe('mapShiftsByEmployee', () => {
         expect(mapShiftsByEmployee([])).toEqual({});
         expect(mapShiftsByEmployee({})).toEqual({});
         expect(mapShiftsByEmployee(1)).toEqual({});
-    })
+    });
 });
