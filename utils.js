@@ -20,6 +20,8 @@ const mapShiftsByEmployee = (shifts) => {
 };
 
 const filterInvalidShifts = (shifts) => {
+    if (!shifts || !Array.isArray(shifts) || shifts.length < 1) return { shifts, invalid: [] };
+
     // sort by start time
     shifts.sort((aShift, bShift) => aShift.StartTime.valueOf() - bShift.StartTime.valueOf());
 
