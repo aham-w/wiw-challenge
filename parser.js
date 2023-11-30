@@ -103,19 +103,19 @@ for (const employeeId in employeeShiftMap) {
 }
 
 const output = [];
-for (const employeeId in employeeShiftMap) {
-    const employeeShiftsByWeek = sortShiftsByWeekNumber(employeeShiftMap[employeeId]) // weekNumber: Array<shifts>
+for (const EmployeeID in employeeShiftMap) {
+    const employeeShiftsByWeek = sortShiftsByWeekNumber(employeeShiftMap[EmployeeID]) // weekNumber: Array<shifts>
 
     Object.values(employeeShiftsByWeek).forEach((shiftsByWeek) => {
         const RegularHours = durationInHours(timeWorked(shiftsByWeek));
         const ts = shiftsByWeek[0].StartTime;
 
         const mergedWeekRes = {
-            EmployeeID: employeeId,
+            EmployeeID,
             StartOfWeek: shiftsByWeek[0].EndTime.startOf('week'),
             RegularHours,
             OvertimeHours: 0,
-            InvalidShifts: invalidShifts[employeeId].filter((shift) => isShiftInWeek(shift, ts)).map((shift) => shift.ShiftID),
+            InvalidShifts: invalidShifts[EmployeeID].filter((shift) => isShiftInWeek(shift, ts)).map((shift) => shift.ShiftID),
         }
 
         if (mergedWeekRes.RegularHours > 40) {
