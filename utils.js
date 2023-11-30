@@ -3,6 +3,8 @@ const moment = require('moment-timezone');
 const mapShiftsByEmployee = (shifts) => {
     const shiftsByEmployee = {};
 
+    if (!shifts || !Array.isArray(shifts) || shifts.length < 1) return shiftsByEmployee;
+
     for (const aShift of shifts) {
         const key = aShift.EmployeeID;
         aShift.StartTime = moment(aShift.StartTime);
