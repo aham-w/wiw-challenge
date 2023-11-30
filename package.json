@@ -4,7 +4,7 @@
   "description": "",
   "main": "parser.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "parse": "node parser.js"
   },
   "author": "aham-w",
@@ -12,5 +12,8 @@
   "dependencies": {
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.43"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
