@@ -5,7 +5,7 @@
   "main": "parser.js",
   "scripts": {
     "test": "jest --verbose",
-    "parse": "node parser.js"
+    "parse": "node index.js"
   },
   "author": "aham-w",
   "license": "ISC",
