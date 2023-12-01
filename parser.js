@@ -11,8 +11,8 @@ const {
 // set cst as default for moment objects as incoming timestamps will be utc by default
 moment.tz.setDefault("America/Chicago");
 
-const parser = (file) => {
-    const employeeShiftMap = mapShiftsByEmployee(file); // employeeId: Array<shifts>
+const parser = (fileObj) => {
+    const employeeShiftMap = mapShiftsByEmployee(fileObj); // employeeId: Array<shifts>
 
     const invalidShifts = {}; // employeeId: Array<shifts>
     for (const employeeId in employeeShiftMap) {

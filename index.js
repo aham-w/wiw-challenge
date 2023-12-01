@@ -6,8 +6,14 @@ if (process.argv.length !== 3 || !process.argv[2].length) {
     console.error('no file found');
 }
 
-const file = require(process.argv[2]);
-const output = parser(file);
+let fileObj;
+try {
+    fileObj = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
+} catch (e) {
+    console.log('error reading json file');
+    process.exit(1);
+}
+const output = parser(fileObj);
 
 fs.writeFile(
     './result.json',
