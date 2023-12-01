@@ -40,6 +40,9 @@ const filterInvalidShifts = (shifts) => {
 // sort shifts by week they occur in year
 const sortShiftsByWeekNumber = (shifts) => {
     const shiftsByWeek = {};
+
+    if (!shifts || !Array.isArray(shifts) || shifts.length < 1) return shiftsByWeek;
+
     shifts.forEach((shift) => {
         const startWeekNumber = shift.StartTime.week();
         const endWeekNumber = shift.EndTime.week();
