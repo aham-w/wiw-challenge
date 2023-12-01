@@ -16,11 +16,16 @@ try {
 }
 const output = parser(fileObj);
 
-fs.writeFile(
-    './result.json',
-    JSON.stringify(output),
-    'utf-8',
-    (e) => {
-        if (!e) console.log('successfully parsed shift data, exported to result.json')
-    }
-);
+if (output) {
+    fs.writeFile(
+        './result.json',
+        JSON.stringify(output),
+        'utf-8',
+        (e) => {
+            if (!e) console.log('successfully parsed shift data, exported to result.json')
+            else console.log('could not export result to file', output);
+        }
+    );
+} else {
+    console.log('json file format is invalid');
+}

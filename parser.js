@@ -12,6 +12,16 @@ const {
 moment.tz.setDefault("America/Chicago");
 
 const parser = (fileObj) => {
+    // validate file obj format
+    if (!Array.isArray(fileObj)) return null;
+    for (const aShift of fileObj) {
+        if (!aShift || typeof aShift !== 'object') return null;
+        if (!aShift.ShiftID || !Number.isInteger(aShift.ShiftID)) return null;
+        if (!aShift.EmployeeID || !Number.isInteger(aShift.EmployeeID)) return null;
+        if (!aShift.StartTime || !moment(aShift.StartTime).isValid()) return null;
+        if (!aShift.EndTime || !moment(aShift.EndTime).isValid()) return null;
+    }
+
     const employeeShiftMap = mapShiftsByEmployee(fileObj); // employeeId: Array<shifts>
 
     const invalidShifts = {}; // employeeId: Array<shifts>
