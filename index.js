@@ -4,6 +4,7 @@ const { parser } = require('./parser');
 
 if (process.argv.length !== 3 || !process.argv[2].length) {
     console.error('no file found');
+    process.exit(1);
 }
 
 let fileObj;
