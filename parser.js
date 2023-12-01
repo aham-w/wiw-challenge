@@ -41,8 +41,8 @@ const parser = (fileObj) => {
             const ts = shiftsByWeek[0].StartTime;
 
             const mergedWeekRes = {
-                EmployeeID,
-                StartOfWeek: shiftsByWeek[0].EndTime.startOf('week'),
+                EmployeeID: Number(EmployeeID),
+                StartOfWeek: shiftsByWeek[0].EndTime.startOf('week').tz('America/Chicago').format('YY-MM-DD'),
                 RegularHours,
                 OvertimeHours: 0,
                 InvalidShifts: invalidShifts[EmployeeID].filter((shift) => isShiftInWeek(shift, ts)).map((shift) => shift.ShiftID),
